@@ -1,0 +1,96 @@
+.tab {
+    -fx-background-color: black;
+}
+
+.tab-pane, .todo-container {
+    -fx-background-color: #494949;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+}
+
+.tab:selected {
+    -fx-background-color: #606060;
+}
+
+.text-field, .text-area, .list-view {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: lightgray;
+    -fx-background-color: black;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+}
+
+.list-view .list-cell {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.text-area {
+    -fx-control-inner-background: black;;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+    -fx-pref-width: 275px;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.column-header {
+	-fx-background-color: #494949;
+	-fx-border-color: #494949;
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+}
+
+.table-view {
+	-fx-background-color: black;
+	-fx-text-fill: white;
+}
+
+.table-row-cell:even {
+	-fx-background-color: darkgray;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: gray;
+}
+
+.combo-box {
+	-fx-background-color: black;
+	-fx-border-color: white;
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+}
+
+.combo-box-base .arrow-button {
+	-fx-background-color: black;
+	-fx-border-color: white;
+	-fx-border-width: 0px 0px 0px 2px;
+	-fx-border-style: solid;
+}
+
+.combo-box-base .arrow {
+    -fx-background-color: white;
+}
+
+.check-box .box {
+    -fx-background-color: black;
+}
+
+.menu-bar, .menu-bar .menu {
+    -fx-background-color: black;
+}
+
+.context-menu {
+    -fx-background-color: #474747;
+}

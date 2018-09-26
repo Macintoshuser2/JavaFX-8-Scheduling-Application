@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="800" maxWidth="800" minHeight="800" minWidth="800" prefHeight="800.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+    <center>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
+                         BorderPane.alignment="CENTER" fx:id="tabPane">
+                    <tabs>
+                        <Tab text="Schedule">
+                            <content>
+                                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                    <center>
+                                        <TableView fx:id="scheduleTable" prefHeight="200.0" prefWidth="200.0"
+                                                   BorderPane.alignment="CENTER">
+                                            <columns>
+                                                <TableColumn fx:id="taskColumn" prefWidth="250.0"
+                                                             text="Scheduled Task/Event"/>
+                                                <TableColumn fx:id="fromColumn" prefWidth="153.0" text="From"/>
+                                                <TableColumn fx:id="toColumn" prefWidth="144.0" text="To"/>
+                                                <TableColumn fx:id="completeColumn" prefWidth="252.0"
+                                                             text="Task Completed"/>
+                                            </columns>
+                                        </TableView>
+                                    </center>
+                                    <bottom>
+                                        <VBox prefHeight="76.0" prefWidth="800.0" spacing="10.0"
+                                              BorderPane.alignment="CENTER">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="23.0" prefWidth="800.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="280.0"
+                                                              spacing="10.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label alignment="CENTER" prefHeight="17.0"
+                                                                       prefWidth="107.0" text="Task Title"/>
+                                                                <TextField fx:id="taskTitleField"
+                                                                           promptText="Task Title"/>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0"
+                                                                        top="10.0"/>
+                                                            </HBox.margin>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="280.0"
+                                                              spacing="10.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label alignment="CENTER" prefHeight="17.0"
+                                                                       prefWidth="108.0" text="From Time"/>
+                                                                <TextField fx:id="fromTimeField" prefHeight="27.0"
+                                                                           prefWidth="170.0"
+                                                                           promptText="From Time"/>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0"
+                                                                        top="10.0"/>
+                                                            </HBox.margin>
+                                                        </HBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="6.0" prefWidth="800.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="280.0"
+                                                              spacing="10.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label alignment="CENTER" prefHeight="17.0"
+                                                                       prefWidth="107.0" text="To Time"/>
+                                                                <TextField fx:id="toTimeField"
+                                                                           promptText="To Time"/>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0"
+                                                                        top="10.0"/>
+                                                            </HBox.margin>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="280.0"
+                                                              spacing="10.0" HBox.hgrow="ALWAYS">
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0"
+                                                                        top="10.0"/>
+                                                            </HBox.margin>
+                                                            <children>
+                                                                <Label alignment="CENTER" prefHeight="17.0"
+                                                                       prefWidth="108.0" text="Completed?"/>
+                                                                <ComboBox fx:id="completedComboBox" prefHeight="27.0"
+                                                                          prefWidth="170.0"
+                                                                          promptText="Choose an option..."/>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="10.0" prefWidth="800.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <Button fx:id="addTaskButton" mnemonicParsing="false"
+                                                                onAction="#onAddTaskButtonClicked" prefHeight="54.0"
+                                                                prefWidth="192.0" text="Add Event/Task to Schedule"/>
+                                                        <Button fx:id="clearFieldsButton" mnemonicParsing="false"
+                                                                onAction="#onClearButtonClicked"
+                                                                text="Clear All Fields"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </bottom>
+                                </BorderPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Bullet Journal">
+                            <content>
+                                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                    <left>
+                                        <VBox prefHeight="738.0" prefWidth="158.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Label alignment="CENTER" prefHeight="23.0" prefWidth="176.0"
+                                                       text="Key">
+                                                    <font>
+                                                        <Font size="18.0"/>
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                                    </padding>
+                                                </Label>
+                                                <ListView fx:id="keyListView" prefHeight="741.0" prefWidth="158.0"/>
+                                                <Button fx:id="addPageButton" mnemonicParsing="false"
+                                                        onAction="#onAddPageButtonClicked" prefHeight="27.0"
+                                                        prefWidth="151.0" text="Add New Page">
+                                                    <VBox.margin>
+                                                        <Insets bottom="5.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </Button>
+                                                <Button fx:id="addKeyButton" mnemonicParsing="false"
+                                                        onAction="#onAddKeyButtonPressed" prefHeight="27.0"
+                                                        prefWidth="155.0" text="Add New Key">
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0"/>
+                                                    </VBox.margin>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                    </left>
+                                    <center>
+                                        <ScrollPane prefHeight="738.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+                                            <content>
+                                                <VBox fx:id="container" alignment="CENTER" prefHeight="200.0"
+                                                      prefWidth="642.0" spacing="5.0">
+                                                    <children>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="642.0"
+                                                              spacing="5.0">
+                                                            <children>
+                                                                <TextField alignment="CENTER" maxHeight="-Infinity"
+                                                                           maxWidth="-Infinity" minHeight="-Infinity"
+                                                                           minWidth="-Infinity" prefHeight="27.0"
+                                                                           prefWidth="250.0" promptText="Page Number:"
+                                                                           VBox.vgrow="ALWAYS">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="5.0" left="10.0" right="10.0"
+                                                                                top="10.0"/>
+                                                                    </VBox.margin>
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextArea maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                          minHeight="-Infinity" minWidth="-Infinity"
+                                                                          prefHeight="235.0" prefWidth="450.0"
+                                                                          promptText="Page Content" wrapText="true">
+                                                                    <font>
+                                                                        <Font size="18.0"/>
+                                                                    </font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </ScrollPane>
+                                    </center>
+                                </BorderPane>
+                            </content>
+                        </Tab>
+                        <Tab text="TODO List">
+                            <content>
+                                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                    <center>
+                                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" fx:id="todoContainer">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="27.0" prefWidth="667.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <CheckBox alignment="CENTER" maxHeight="-Infinity"
+                                                                  maxWidth="-Infinity" minHeight="-Infinity"
+                                                                  minWidth="-Infinity" mnemonicParsing="false"
+                                                                  prefHeight="18.0" prefWidth="24.0">
+                                                            <HBox.margin>
+                                                                <Insets right="30.0"/>
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextField maxHeight="-Infinity" maxWidth="-Infinity"
+                                                                   minHeight="-Infinity" minWidth="-Infinity"
+                                                                   prefHeight="27.0" prefWidth="496.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </center>
+                                </BorderPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </center>
+        </BorderPane>
+    </center>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER" fx:id="menuBar">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="saveAppData" mnemonicParsing="false" text="Save Application Data" onAction="#onSaveDataClicked"/>
+                        <MenuItem fx:id="saveAllAppData" mnemonicParsing="false" text="Save All Application Data" onAction="#onSaveAllDataClicked"/>
+                        <MenuItem fx:id="openAppData" mnemonicParsing="false" text="Open Application Data" onAction="#onOpenDataClicked"/>
+                        <MenuItem mnemonicParsing="false" text="Close" onAction="#onCloseClicked"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>
